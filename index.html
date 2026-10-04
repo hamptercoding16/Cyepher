@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ECIR | Eco-Centive Innovative Robot — Protect the present. Preserve the future.</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--w:#fff;--g:#f8f9fa;--blue:#0b4f7a;--navy:#0b4f7a;--green:#1fa85a;--ink:#2b3a47;--line:#dde3e8;--on-green:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--w:#111a22;--g:#16212b;--blue:#8cc7ee;--green:#2fc872;--ink:#c9d4dc;--line:#2a3945;--on-green:#08210f}}
+:root[data-theme="dark"]{--w:#111a22;--g:#16212b;--blue:#8cc7ee;--green:#2fc872;--ink:#c9d4dc;--line:#2a3945;--on-green:#08210f}
+html{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--w);color:var(--ink);font:16px/1.55 "Trebuchet MS","Segoe UI",system-ui,sans-serif}
+h1,h2,h3{color:var(--blue);font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2rem,6vw,3.4rem)}h2{font-size:clamp(1.6rem,4vw,2.3rem);text-align:center}h3{font-size:1.2rem}
+p{margin:0 0 1em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+.alt{background:var(--g)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 26px;border-radius:999px;background:var(--green);color:var(--on-green);font-weight:700;text-decoration:none;border:0;cursor:pointer;font-size:1rem}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--navy);color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:68px}
+.logo{font:700 1.4rem Georgia,serif;color:#fff;text-decoration:none}
+.links{display:none;gap:16px}.authbox{display:none;gap:8px;align-items:center}
+.links a{color:#fff;text-decoration:none;font-weight:600;padding:12px 4px}
+.burger{min-width:48px;min-height:48px;background:none;border:1px solid rgba(255,255,255,.5);border-radius:10px;color:#fff;font-size:1.5rem;cursor:pointer}
+.right{display:flex;gap:10px;align-items:center}
+.drawer{display:none;background:var(--navy);padding:0 20px 12px}
+.drawer.open{display:block}
+.drawer a{display:flex;align-items:center;min-height:48px;color:#fff;text-decoration:none;font-weight:600;border-top:1px solid rgba(255,255,255,.2)}
+@media(min-width:1100px){.links{display:flex}.authbox{display:flex!important}.burger,.drawer{display:none!important}}
+.hero{display:grid;gap:40px;align-items:center}
+.hero .sub{font:700 1.3rem Georgia,serif;color:var(--blue);margin-bottom:1.2em}
+.mock{background:var(--navy);border-radius:24px;padding:20px;color:#fff;max-width:360px;margin:0 auto;width:100%}
+.mock .pts{background:rgba(255,255,255,.12);border-radius:16px;padding:16px;margin-bottom:12px}
+.mock b.big{font-size:2.2rem;color:#7ff0ad;display:block}
+.bar{height:10px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;width:0%;background:var(--green)}
+.row{display:flex;justify-content:space-between;padding:10px 0;border-top:1px solid rgba(255,255,255,.2);font-size:.95rem}
+.row span:last-child{color:#7ff0ad;font-weight:700}
+.about{max-width:720px;margin:0 auto;text-align:center}
+.about ul{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px;text-align:left}
+.about li{background:var(--g);border-left:4px solid var(--green);padding:12px 16px;border-radius:8px}
+.alt .about li{background:var(--w)}
+.grid{display:grid;gap:20px;grid-template-columns:1fr;margin-top:32px}
+.card{background:var(--w);border:1px solid var(--line);border-top:6px solid var(--c);border-radius:16px;padding:24px}
+.alt .card{background:var(--w)}
+.ico{width:56px;height:56px;border-radius:14px;background:var(--c);opacity:.9;display:grid;place-items:center;margin-bottom:14px}
+.ico svg{width:30px;height:30px;stroke:#1b2733;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card ul{margin:0;padding-left:18px}
+.note{max-width:760px;margin:32px auto 0;padding:16px 20px;border-radius:12px;background:var(--g);border:1px solid var(--line)}
+.tabs{display:flex;justify-content:center;gap:8px;margin:28px 0}
+.tab{min-height:48px;padding:10px 22px;border-radius:999px;border:2px solid var(--blue);background:none;color:var(--blue);font-weight:700;cursor:pointer;font-size:1rem}
+.tab[aria-selected="true"]{background:var(--blue);color:var(--w)}
+.panel[hidden]{display:none}
+.coupon{display:flex;flex-direction:column;gap:10px;border:2px dashed var(--line);border-radius:16px;padding:20px;background:var(--w)}
+details.coupon{display:block}
+details.coupon summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;gap:10px;min-height:48px}
+details.coupon summary::-webkit-details-marker{display:none}
+details.coupon summary h3,details.coupon summary p{margin:0}
+.hint{font-size:.85rem;color:var(--blue);font-weight:600}
+details[open] .hint{display:none}
+.desc{margin:14px 0 0;padding-top:14px;border-top:1px dashed var(--line)}
+details.coupon[open]{border-color:var(--green)}
+.badge{align-self:flex-start;background:var(--green);color:var(--on-green);font-weight:800;padding:6px 14px;border-radius:999px}
+.scroll{overflow-x:auto;max-width:720px;margin:32px auto 0;border:1px solid var(--line);border-radius:12px;background:var(--w)}
+table{width:100%;border-collapse:collapse;min-width:420px}
+th,td{padding:14px 16px;text-align:left;white-space:nowrap}
+th{background:var(--navy);color:#fff}
+tr+tr td{border-top:1px solid var(--line)}
+td.pt{color:var(--green);font-weight:700}
+tr.top td{font-weight:800;background:rgba(31,168,90,.12);font-size:1.1rem}
+.two{display:grid;gap:32px;align-items:start}
+.sdg{display:grid;gap:16px}
+.sdg div{background:var(--w);border-radius:14px;padding:18px;border-left:6px solid var(--green)}
+footer{background:var(--navy);color:#fff;padding:48px 0 32px}
+footer a{color:#fff;display:block;padding:10px 0;text-decoration:none}
+footer .cols{display:grid;gap:28px}
+footer small{opacity:.85;display:block;margin-top:8px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}.cols3{grid-template-columns:repeat(2,1fr)}footer .cols{grid-template-columns:1.2fr 1fr 1.2fr}.two{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.hero{grid-template-columns:1.1fr .9fr}}
+.authbox .hi,#abm .hi{color:#fff;font-weight:700;align-self:center}
+.gh{background:none;border:1px solid rgba(255,255,255,.6);color:#fff;border-radius:999px;padding:0 16px;min-height:48px;font-weight:700;cursor:pointer;font-size:1rem}
+.gh.fill{background:#fff;color:#0b4f7a}
+#abm{display:flex;gap:10px;flex-wrap:wrap;padding:12px 0;border-top:1px solid rgba(255,255,255,.2)}
+.mbtn{min-height:48px;border:0;border-radius:12px;background:#fff;color:#0b4f7a;font-weight:700;cursor:pointer;flex:1;font-size:.95rem;padding:0 8px}
+.dep{display:flex;gap:8px;margin-top:8px}.mc{font-size:.85rem;opacity:.85;margin:12px 0 0}
+.row a{color:#7ff0ad;font-weight:700;padding:8px 0}.row small{opacity:.8;font-family:monospace}
+dialog{border:0;border-radius:18px;padding:24px;width:min(420px,92vw);background:var(--w);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.55)}
+dialog label{font-weight:600}
+dialog input{width:100%;min-height:48px;padding:10px 14px;margin:6px 0 14px;border:1px solid var(--line);border-radius:10px;font-size:1rem;background:var(--g);color:var(--ink)}
+.err{color:#c0392b;min-height:1.3em;margin-bottom:8px}
+.link-btn{display:block;margin:4px auto 0;background:none;border:0;color:var(--blue);text-decoration:underline;cursor:pointer;font-size:1rem;min-height:48px}
+.code{font:700 1.3rem monospace;background:var(--g);border:2px dashed var(--green);border-radius:12px;padding:14px;text-align:center;word-break:break-all;margin:14px 0}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--green);color:var(--on-green);font-weight:700;padding:12px 20px;border-radius:999px;display:none;z-index:50}
+.mock input{width:100%;min-height:48px;border-radius:10px;border:0;padding:0 12px;margin:8px 0;font-size:1rem}</style>
+</head>
+<body>
+<header>
+ <div class="wrap nav">
+  <a class="logo" href="#top">Eco-centive</a>
+  <nav class="links" aria-label="Main"><a href="#how">How It Works</a><a href="#rewards">Rewards Catalog</a><a href="#leaderboard">Competitive Leaderboard</a><a href="#sdgs">SDGs</a></nav>
+  <div class="right"><span class="authbox" id="ab"></span><a class="btn" href="#install">Install App</a><button class="burger" id="bg" aria-label="Open menu" aria-expanded="false">☰</button></div>
+ </div>
+ <nav class="drawer" id="dr" aria-label="Mobile"><a href="#how">How It Works</a><a href="#rewards">Rewards Catalog</a><a href="#leaderboard">Competitive Leaderboard</a><a href="#sdgs">SDGs</a><div id="abm"></div></nav>
+</header>
+
+<main id="top">
+<section>
+ <div class="wrap hero">
+  <div>
+   <p class="mc" style="color:var(--blue);font-weight:700;opacity:1;margin:0 0 8px">Eco-Centive Innovative Robot (ECIR)</p><h1>Turn every piece of trash into points.</h1>
+   <p class="sub">Protect the present. Preserve the future.</p>
+   <p><strong>Sort. Deposit. Earn.</strong> Our battery-powered robot collects and sorts your trash, then credits your account.</p>
+   <a class="btn" id="install" href="#install">Install App</a>
+  </div>
+  <div class="mock" id="acct"></div>
+ </div>
+</section>
+
+<section class="alt">
+ <div class="wrap about">
+  <h2>About Eco-centive</h2>
+  <p><strong>ECIR (Eco-Centive Innovative Robot)</strong> is a battery-powered robot that collects trash and sorts it into metal, wet and dry compartments. Users earn points and redeem them as coupons.</p>
+  <ul>
+   <li><strong>Less landfill:</strong> sorted waste can be recycled or composted.</li>
+   <li><strong>Habit change:</strong> points make sorting worth the effort.</li>
+   <li><strong>Real rewards:</strong> redeem points for gaming credits and vouchers.</li><li><strong>Local problem:</strong> built for proper waste disposal and management in the Philippines.</li><li><strong>Trash-to-Cash, upgraded:</strong> a modern take on the Trash-to-Cash program in Lipa City.</li>
+  </ul>
+ </div>
+</section>
+
+<section id="how">
+ <div class="wrap">
+  <h2>How it works: 3 sorted compartments</h2>
+  <div class="grid">
+   <article class="card" style="--c:#d9a066"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21c-4 0-7-3-7-7 0-5 7-11 14-11 0 8-3 18-7 18z"/><path d="M5 21c3-5 6-8 10-10"/></svg></div>
+    <h3>Wet Trash</h3><span class="badge" style="display:inline-block;margin-bottom:10px">+15 pts per item</span><p><strong>Organic waste.</strong></p><ul><li>Food scraps</li><li>Fruit and veg peels</li><li>Leftovers</li></ul></article>
+   <article class="card" style="--c:#b8c0c8"><div class="ico"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M7 7h10M7 17h10"/></svg></div>
+    <h3>Metal</h3><span class="badge" style="display:inline-block;margin-bottom:10px">+30 pts per item</span><p><strong>Cans and tins.</strong></p><ul><li>Aluminum cans</li><li>Steel tins</li><li>Empty and rinsed</li></ul></article>
+   <article class="card" style="--c:#9fd3f0"><div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></div>
+    <h3>Dry Trash</h3><span class="badge" style="display:inline-block;margin-bottom:10px">+20 pts per item</span><p><strong>Clean recyclables.</strong></p><ul><li>Paper</li><li>Cardboard</li><li>Non-metal items</li></ul></article>
+  </div>
+  <p class="note"><strong>Why separate?</strong> Wet waste soaks into paper and cardboard and makes them unrecyclable. Splitting wet, metal and dry keeps dry items clean and raises recycling efficiency.</p>
+ </div>
+</section>
+
+<section class="alt" id="rewards">
+ <div class="wrap">
+  <h2>Rewards Catalog</h2>
+  <div class="tabs" role="tablist">
+   <button class="tab" role="tab" id="t1" aria-selected="true" aria-controls="p1">Gaming Credits</button>
+   <button class="tab" role="tab" id="t2" aria-selected="false" aria-controls="p2">Vouchers</button>
+  </div>
+  <div class="grid panel" id="p1" role="tabpanel" aria-labelledby="t1">
+   <details class="coupon"><summary><h3>Robux 80</h3><p>Roblox currency top-up.</p><span class="badge">600 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Redeem 600 points for 80 Robux. Your code appears after redemption and a message is prepared for your Gmail. Works on the official Roblox redeem page.</p><button class="btn redeem" style="margin-top:14px" data-n="Robux 80" data-c="600">Redeem for 600 pts</button></details>
+   <details class="coupon"><summary><h3>Mobile game points</h3><p>Top-up for popular mobile titles.</p><span class="badge">450 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Redeem 450 points for a top-up code. Choose a supported mobile game at checkout. Codes are single-use.</p><button class="btn redeem" style="margin-top:14px" data-n="Mobile game points" data-c="450">Redeem for 450 pts</button></details>
+   <details class="coupon"><summary><h3>In-game tokens</h3><p>Pack of 100 tokens.</p><span class="badge">300 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Redeem 300 points for 100 in-game tokens, credited to the linked game account.</p><button class="btn redeem" style="margin-top:14px" data-n="In-game tokens" data-c="300">Redeem for 300 pts</button></details>
+  </div>
+  <div class="grid panel" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+   <details class="coupon"><summary><h3>Canteen meal discount</h3><p>20% off one meal.</p><span class="badge">240 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Show the voucher QR code at the canteen counter. One use per voucher. Valid for 7 days after redemption.</p><button class="btn redeem" style="margin-top:14px" data-n="Canteen meal discount" data-c="240">Redeem for 240 pts</button></details>
+   <details class="coupon"><summary><h3>Partner drink voucher</h3><p>Free regular drink.</p><span class="badge">360 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Redeem at any partner drink stand. Regular size only. Valid for 14 days after redemption.</p><button class="btn redeem" style="margin-top:14px" data-n="Partner drink voucher" data-c="360">Redeem for 360 pts</button></details>
+   <details class="coupon"><summary><h3>Stationery coupon</h3><p>10% off at partner shop.</p><span class="badge">150 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Show the coupon code at the partner shop. Applies to one purchase. Not combinable with other offers.</p><button class="btn redeem" style="margin-top:14px" data-n="Stationery coupon" data-c="150">Redeem for 150 pts</button></details>
+  </div>
+ </div>
+</section>
+
+<section id="leaderboard">
+ <div class="wrap">
+  <h2>Competitive Leaderboard</h2>
+  <p style="text-align:center">Top 5 sections this month. Placeholder data.</p>
+  <div class="scroll">
+   <table>
+    <thead><tr><th>Rank</th><th>User / Section</th><th>Points</th></tr></thead>
+    <tbody>
+     <tr><td>5</td><td>Section 10-D</td><td class="pt">0</td></tr>
+     <tr><td>4</td><td>Section 11-A</td><td class="pt">0</td></tr>
+     <tr><td>3</td><td>Section 9-C</td><td class="pt">0</td></tr>
+     <tr class="top"><td>2</td><td>Section 12-B</td><td class="pt">0</td></tr>
+     <tr class="top"><td>1</td><td>Section 10-A</td><td class="pt">0</td></tr>
+    </tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<section class="alt" id="sdgs">
+ <div class="wrap two">
+  <div>
+   <h2 style="text-align:left">Built for the UN Sustainable Development Goals</h2>
+   <p>ECIR is a prototype that makes proper waste disposal a daily habit.</p>
+   <p><strong>Aligned with SDGs 3, 7, 9, 12 and 13.</strong></p>
+  </div>
+  <div class="sdg"><div><h3>SDG 3: Good Health and Well-Being</h3><p>Less loose waste means cleaner, healthier communities.</p></div><div><h3>SDG 7: Affordable and Clean Energy</h3><p>A battery-powered robot that needs no fuel.</p></div><div><h3>SDG 9: Industry, Innovation and Infrastructure</h3><p>A new robotic approach to waste collection.</p></div><div><h3>SDG 12: Responsible Consumption and Production</h3><p>Sorted waste can be recycled and reused.</p></div><div><h3>SDG 13: Climate Action</h3><p>Keeping waste out of landfills helps cut methane emissions.</p></div></div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap cols">
+  <div><div class="logo">Eco-centive</div><small>Protect the present. Preserve the future.<br>Eco-Centive Innovative Robot (ECIR)</small></div>
+  <nav aria-label="Footer"><a href="#how">How It Works</a><a href="#rewards">Rewards Catalog</a><a href="#leaderboard">Competitive Leaderboard</a><a href="#sdgs">SDGs</a></nav>
+  <div><strong>Designed and Developed by Cyepher</strong><small>Prototype for demonstration only. All rights reserved.</small></div>
+ </div>
+</footer>
+
+<dialog id="dlg"></dialog><div id="toast" role="status"></div>
+<script type="module">import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,updateProfile} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getDatabase,ref,onValue,set,push,runTransaction} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+// PASTE YOUR FIREBASE WEB CONFIG HERE (Project settings > Your apps > Web)
+const cfg={apiKey:"AIzaSyB0x25R3dAoVCuVpqQ-LbU24mwBWue2fV0",authDomain:"cyepher-c6816.firebaseapp.com",databaseURL:"https://cyepher-c6816-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"cyepher-c6816",appId:"1:144337062968:web:fe5f6cfb3cd6b946496acd"};
+const app=initializeApp(cfg),auth=getAuth(app),db=getDatabase(app);
+const $=i=>document.getElementById(i),COSTS=[150,240,300,360,450,600];
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let U=null,prof={},pts=0,offs=[],wOff=null;
+function mail(r){const b=`Hi ${U.displayName||''},
+
+You redeemed "${r.name}" for ${r.cost} points.
+
+Your code: ${r.code}
+
+Use it with the partner this reward applies to. Keep this code private.
+
+Eco-centive (prototype)
+Protect the present. Preserve the future.`;
+ return 'https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(U.email)+'&su='+encodeURIComponent('Your Eco-centive reward: '+r.name)+'&body='+encodeURIComponent(b)}
+function gen(){const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',a=new Uint8Array(12);crypto.getRandomValues(a);let s='';for(let i=0;i<12;i++){s+=A[a[i]%A.length];if(i%4==3&&i<11)s+='-'}return 'ECO-'+s}
+function toast(m){const t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',2500)}
+function rewards(){return Object.entries(prof.rewards||{}).sort((a,b)=>a[0]<b[0]?1:-1).map(e=>e[1])}
+function render(){
+ const a=U?`<span class="hi">${esc(U.displayName||'Me')} · ${pts} pts</span><button class="gh" data-a="out">Log out</button>`:'<button class="gh" data-a="in">Log in</button><button class="gh fill" data-a="up">Sign up</button>';
+ $('ab').innerHTML=a;$('abm').innerHTML=a;
+ const nx=COSTS.find(c=>c>pts);
+ let h=`<div class="pts">${U?esc(U.displayName||'My')+'’s points':'Your points'}<b class="big">${pts}</b><div class="bar"><i style="width:${Math.min(100,pts/6)}%"></i></div><small>${U?(nx?(nx-pts)+' pts to next reward':'You can redeem any reward'):'Log in or sign up to see your points'}</small></div>`;
+ if(U&&!prof.card)h+='<p class="mc">Link your card to start earning</p><input id="ch" placeholder="Card ID (e.g. c04A1B2C3)" autocomplete="off"><button class="btn" style="width:100%" data-a="link">Link card</button>';
+ else if(U)h+=`<p class="mc">Card linked: ${esc(prof.card)}<br>Drop trash at the machine, then tap your card. Points appear here live.</p>`;
+ const rs=rewards();if(rs.length){h+='<p class="mc" style="margin-top:16px">My reward codes</p>';rs.slice(0,4).forEach(r=>{h+=`<div class="row"><span>${esc(r.name)}<br><small>${esc(r.code)}</small></span><a target="_blank" rel="noopener" href="${mail(r)}">Email</a></div>`})}
+ $('acct').innerHTML=h}
+function watchWallet(){if(wOff){wOff();wOff=null}pts=0;if(!prof.card)return;let ready=false;
+ wOff=onValue(ref(db,'wallets/'+prof.card+'/points'),s=>{const n=s.val()||0;if(ready&&n>pts)toast('+'+(n-pts)+' points');ready=true;pts=n;render()})}
+onAuthStateChanged(auth,u=>{offs.forEach(f=>f());offs=[];if(wOff){wOff();wOff=null}U=u;prof={};pts=0;render();if(!u)return;
+ offs.push(onValue(ref(db,'users/'+u.uid),s=>{const old=prof.card;prof=s.val()||{};if(prof.card!==old)watchWallet();render()}))});
+const dlg=$('dlg');
+function show(h){dlg.innerHTML=h+'<button class="link-btn" data-a="close">Close</button>';if(!dlg.open)dlg.showModal()}
+const ERR={'auth/email-already-in-use':'This email already has an account. Log in instead.','auth/invalid-credential':'Wrong email or password.','auth/weak-password':'Password must be at least 6 characters.','auth/invalid-email':'Enter a valid email address.'};
+function authUI(m,note){const up=m=='up';
+ show(`<h2 style="text-align:left">${up?'Create account':'Log in'}</h2>${note?'<p>'+note+'</p>':''}<form id="af" novalidate>${up?'<label for="fn">Name</label><input id="fn" autocomplete="name">':''}<label for="fe">Gmail address</label><input id="fe" type="email" autocomplete="email" placeholder="you@gmail.com"><label for="fp">Password</label><input id="fp" type="password" autocomplete="${up?'new-password':'current-password'}" placeholder="At least 6 characters"><div class="err" id="er" role="alert"></div><button class="btn" style="width:100%" type="submit">${up?'Sign up':'Log in'}</button></form><button class="link-btn" data-a="${up?'in':'up'}">${up?'Have an account? Log in':'New here? Sign up'}</button>`);
+ $('af').onsubmit=async ev=>{ev.preventDefault();const e=$('fe').value.trim(),p=$('fp').value,er=$('er');
+  try{if(up){const n=$('fn').value.trim();if(!n){er.textContent='Enter your name.';return}const c=await createUserWithEmailAndPassword(auth,e,p);await updateProfile(c.user,{displayName:n});U=auth.currentUser;render()}
+  else await signInWithEmailAndPassword(auth,e,p);dlg.close()}catch(x){er.textContent=ERR[x.code]||'Something went wrong. Try again.'}}}
+async function redeem(name,cost){
+ if(!U){authUI('in','Log in to redeem rewards.');return}
+ if(!prof.card){show('<h2 style="text-align:left">Link your card first</h2><p>Link your card on the dashboard so we know where your points are.</p>');return}
+ if(pts<cost){show(`<h2 style="text-align:left">Not enough points</h2><p>You need <strong>${cost-pts} more points</strong> for ${esc(name)}.</p>`);return}
+ try{const r=await runTransaction(ref(db,'wallets/'+prof.card+'/points'),c=>(c||0)>=cost?c-cost:undefined);
+  if(!r.committed){show('<h2 style="text-align:left">Not enough points</h2>');return}
+  const rw={name,cost,code:gen()};await push(ref(db,'users/'+U.uid+'/rewards'),rw);
+  show(`<h2 style="text-align:left">Reward unlocked</h2><p><strong>${esc(name)}</strong> for ${cost} points. Your code:</p><div class="code">${rw.code}</div><p>Tap below to open Gmail with the message ready, then press Send.</p><a class="btn" style="width:100%" target="_blank" rel="noopener" href="${mail(rw)}">Email code to my Gmail</a>`)}
+ catch(e){toast('Could not redeem. Try again.')}}
+async function link(){const h=($('ch').value||'').trim();if(!/^[A-Za-z0-9_-]{8,64}$/.test(h)){toast('Card ID must be 8 to 64 letters or digits');return}
+ try{await set(ref(db,'cardOwners/'+h),U.uid);await set(ref(db,'users/'+U.uid+'/card'),h);toast('Card linked')}catch(e){toast('This card is already linked to another account')}}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-a],.redeem');if(!t)return;
+ const a=t.dataset.a;if(a){if(a=='in'||a=='up')authUI(a);else if(a=='out')signOut(auth);else if(a=='close')dlg.close();else if(a=='link')link();return}
+ redeem(t.dataset.n,+t.dataset.c)});
+</script>
+<script>
+var bg=document.getElementById('bg'),dr=document.getElementById('dr');
+bg.onclick=function(){var o=dr.classList.toggle('open');bg.setAttribute('aria-expanded',o);bg.textContent=o?'✕':'☰'};
+dr.onclick=function(e){if(e.target.tagName==='A'){dr.classList.remove('open');bg.textContent='☰'}};
+[['t1','p1'],['t2','p2']].forEach(function(p){document.getElementById(p[0]).onclick=function(){
+ [['t1','p1'],['t2','p2']].forEach(function(q){var s=q[0]===p[0];document.getElementById(q[0]).setAttribute('aria-selected',s);document.getElementById(q[1]).hidden=!s})}});
+</script>
+</body>
+</html>
