@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050a18">
+<title>CYEPHER // ECIR — Protect the present. Preserve the future.</title>
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="icon-192.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="ECIR"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>tailwind.config={theme:{extend:{colors:{eco:'#22e07a',mut:'#8fa3c8'},fontFamily:{sans:['Inter','system-ui','sans-serif'],mono:['JetBrains Mono','ui-monospace','monospace']}}}}</script>
+<style>
+:root{--eco:#22e07a;--ink:#e8eefc;--mut:#8fa3c8;--line:rgba(148,170,220,.18)}
+html{scroll-behavior:smooth;scroll-padding-top:84px;color-scheme:dark}
+[hidden]{display:none!important}
+body{margin:0;color:var(--ink);font-family:Inter,system-ui,sans-serif;min-height:100vh;background:#050a18 radial-gradient(900px 500px at 85% -5%,rgba(34,224,122,.14),transparent 60%),radial-gradient(800px 600px at -10% 25%,rgba(37,99,235,.28),transparent 60%),linear-gradient(180deg,#07112b,#050a18 60%) fixed}
+:focus-visible{outline:2px solid var(--eco);outline-offset:2px}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.glass{background:rgba(255,255,255,.04);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:18px}
+.gridbg{position:absolute;inset:0;opacity:.35;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:radial-gradient(ellipse at 50% 0,#000 20%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 0,#000 20%,transparent 70%)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;background:var(--eco);color:#032612;font-weight:700;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s;font-size:1rem;text-decoration:none}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(34,224,122,.35)}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{box-shadow:none;border-color:var(--eco)}
+.gh{background:none;border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:0 16px;min-height:44px;font-weight:600;cursor:pointer;font-size:.95rem}
+.gh.fill{background:rgba(34,224,122,.15);border-color:var(--eco);color:var(--eco)}
+.hi{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--eco)}
+.dot{width:8px;height:8px;border-radius:50%;background:#f59e0b;display:inline-block}
+[data-on="1"] .dot{background:var(--eco);animation:pl 1.6s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(34,224,122,.6)}100%{box-shadow:0 0 0 9px rgba(34,224,122,0)}}
+#dr{display:none;border-top:1px solid var(--line)}#dr.open{display:block}
+#dr a{display:flex;align-items:center;min-height:48px;font-family:'JetBrains Mono',monospace;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);border-bottom:1px solid var(--line)}
+#abm{display:flex;gap:10px;flex-wrap:wrap;padding:12px 0}
+@media(min-width:1024px){#dr{display:none!important}}
+.big{font:700 3rem/1 'JetBrains Mono',monospace;color:var(--eco);display:block;margin:6px 0 10px}
+.pts{color:var(--mut);font-size:.9rem}
+.pts small{display:block;color:var(--mut);font-family:'JetBrains Mono',monospace;font-size:.72rem;margin-top:10px}
+.bar{height:8px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#16a35a,var(--eco));transition:width .6s}
+.mc{font:.75rem/1.5 'JetBrains Mono',monospace;color:var(--mut);margin:14px 0 6px}
+#acct input,dialog input{width:100%;min-height:48px;padding:0 14px;margin:6px 0 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--ink);font-size:1rem}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:.9rem}
+.row small{font-family:'JetBrains Mono',monospace;color:var(--eco)}.row a{color:var(--eco);font-weight:700;padding:8px 0}
+.tab{min-height:48px;padding:0 22px;border-radius:12px;border:1px solid var(--line);background:none;color:var(--mut);font-weight:700;cursor:pointer;font-size:1rem}
+.tab[aria-selected="true"]{background:var(--eco);color:#032612;border-color:var(--eco)}
+.cp{padding:20px;transition:transform .2s,border-color .2s}.cp:hover{transform:translateY(-4px);border-color:rgba(34,224,122,.5)}
+.cp[open]{border-color:var(--eco)}
+.cp summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;gap:8px;min-height:48px}
+.cp summary::-webkit-details-marker{display:none}.cp h3{font-size:1.1rem;font-weight:700;margin:0}
+.cp p{margin:0;color:var(--mut);font-size:.92rem}
+.badge{align-self:flex-start;font:700 .85rem 'JetBrains Mono',monospace;background:rgba(34,224,122,.15);color:var(--eco);border:1px solid rgba(34,224,122,.5);padding:5px 12px;border-radius:999px}
+.hint{font:.7rem 'JetBrains Mono',monospace;color:var(--mut)}.cp[open] .hint{display:none}
+.desc{margin-top:14px!important;padding-top:14px;border-top:1px dashed var(--line)}
+.lb td,.lb th{padding:16px;text-align:left;white-space:nowrap}
+.lb th{font:.72rem 'JetBrains Mono',monospace;color:var(--mut);text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--line)}
+.lb tbody tr+tr td{border-top:1px solid var(--line)}
+.lb .pt,.lb .rk{font-family:'JetBrains Mono',monospace;font-weight:700}.lb .pt{color:var(--eco)}
+.lb tr.r1{background:linear-gradient(90deg,rgba(34,224,122,.22),rgba(34,224,122,.04));box-shadow:inset 3px 0 0 var(--eco)}
+.lb tr.r1 td{font-size:1.1rem;font-weight:800}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}*{animation:none!important;scroll-behavior:auto!important}}
+dialog{border:1px solid var(--line);border-radius:18px;padding:24px;width:min(420px,92vw);background:#0b1530;color:var(--ink)}
+dialog::backdrop{background:rgba(2,6,20,.75)}
+dialog h2{font-size:1.4rem;font-weight:800;margin:0 0 12px}dialog label{font-weight:600;font-size:.9rem}
+.err{color:#ff8b8b;min-height:1.3em;margin-bottom:8px;font-size:.9rem}
+.link-btn{display:block;margin:4px auto 0;background:none;border:0;color:var(--mut);text-decoration:underline;cursor:pointer;font-size:1rem;min-height:48px}
+.code{font:700 1.25rem 'JetBrains Mono',monospace;color:var(--eco);border:2px dashed var(--eco);border-radius:12px;padding:14px;text-align:center;word-break:break-all;margin:14px 0}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--eco);color:#032612;font-weight:700;padding:12px 20px;border-radius:999px;display:none;z-index:60}
+.glass{position:relative}.glass::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(34,224,122,.13),transparent 60%);opacity:0;transition:opacity .3s}.glass:hover::after{opacity:1}
+#prog{position:fixed;top:0;left:0;right:0;height:3px;background:var(--eco);transform:scaleX(0);transform-origin:0 50%;z-index:70}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.45;pointer-events:none;animation:fl 14s ease-in-out infinite}
+.b1{width:320px;height:320px;background:#1d4ed8;top:-80px;left:-60px}.b2{width:280px;height:280px;background:#16a35a;right:-40px;bottom:-60px;animation-delay:-6s}
+@keyframes fl{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,30px) scale(1.15)}}
+.shine{background:linear-gradient(90deg,#22e07a,#b6ffd8,#22e07a);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:sh 4s linear infinite}
+@keyframes sh{to{background-position:-200% 0}}
+.btn.pulse{animation:bp 2.4s infinite}@keyframes bp{0%{box-shadow:0 0 0 0 rgba(34,224,122,.5)}70%,100%{box-shadow:0 0 0 14px rgba(34,224,122,0)}}
+.tick{overflow:hidden;padding:14px 0;background:rgba(255,255,255,.02)}.tk{display:flex;width:max-content;animation:mq 30s linear infinite;font-size:.8rem;color:var(--mut);letter-spacing:.15em;white-space:nowrap}.tk span{padding-right:44px}.tk span:nth-child(3n+1){color:var(--eco)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.anim{position:relative;height:64px;margin:14px 0 0}.anim .bin{position:absolute;bottom:0;left:50%;width:46px;height:30px;transform:translateX(-50%);border:2px solid var(--c);border-top:0;border-radius:0 0 12px 12px}
+.anim .item{position:absolute;left:50%;top:0;width:12px;height:12px;margin-left:-6px;border-radius:50%;background:var(--c);animation:dr 2.4s ease-in infinite;animation-delay:var(--d)}
+.anim .plus{position:absolute;left:calc(50% + 34px);bottom:14px;font:700 .9rem 'JetBrains Mono',monospace;color:var(--eco);opacity:0;animation:pu 2.4s infinite;animation-delay:var(--d)}
+@keyframes dr{0%{transform:translateY(-4px);opacity:0}15%{opacity:1}55%{transform:translateY(36px);opacity:1}60%,100%{transform:translateY(36px);opacity:0}}
+@keyframes pu{0%,55%{opacity:0;transform:translateY(0)}62%{opacity:1}100%{opacity:0;transform:translateY(-24px)}}
+.lb tr.r1{animation:gw 2.4s ease-in-out infinite}@keyframes gw{0%,100%{box-shadow:inset 3px 0 0 var(--eco),0 0 0 rgba(34,224,122,0)}50%{box-shadow:inset 3px 0 0 var(--eco),0 0 26px rgba(34,224,122,.35)}}
+.big{animation:bump .5s}@keyframes bump{from{transform:scale(1.15)}to{transform:none}}
+.mw{position:relative}.menu{position:absolute;left:0;top:calc(100% + 10px);min-width:240px;padding:8px;background:#0b1530;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 50px rgba(0,0,0,.5);z-index:60}
+.menu button{display:flex;width:100%;align-items:center;min-height:48px;padding:0 12px;border:0;background:none;color:var(--ink);font-size:.95rem;border-radius:10px;cursor:pointer;text-align:left}.menu button:hover{background:rgba(34,224,122,.12)}
+.cl{padding-left:18px;margin:0 0 14px;color:var(--mut);font-size:.92rem}.cl li{margin-bottom:8px}.cl b{color:var(--ink)}
+.tg{display:flex;align-items:center;gap:12px;min-height:48px;cursor:pointer}.tg input{width:22px!important;min-height:22px!important;height:22px;margin:0!important;accent-color:var(--eco)}
+html.bigtext{font-size:112%}.noanim *,.noanim *::before,.noanim *::after{animation:none!important;transition:none!important}.noanim .rv{opacity:1!important;transform:none!important}
+.logo-float{animation:lf 5s ease-in-out infinite;filter:drop-shadow(0 10px 30px rgba(34,224,122,.28))}@keyframes lf{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+</style>
+</head>
+<body id="top"><div id="prog"></div>
+<svg width="0" height="0" style="position:absolute"><symbol id="ck" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></symbol></svg>
+
+<header class="sticky top-0 z-40 border-b" style="background:rgba(5,10,24,.8);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line);padding-top:env(safe-area-inset-top,0px)">
+ <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between gap-3">
+  <div class="flex items-center gap-2"><a href="#top" class="flex items-center gap-2 mono font-bold tracking-wider text-sm sm:text-base whitespace-nowrap" aria-label="CYEPHER ECIR home"><img src="logo.png" alt="" width="36" height="36" class="rounded-full" style="width:36px;height:36px"><span class="sm:hidden">ECIR</span><span class="hidden sm:inline">CYEPHER <span class="text-eco">//</span> ECIR</span></a><div class="mw"><button id="mn" class="gh" style="width:44px;padding:0;font-size:1.15rem" aria-haspopup="menu" aria-expanded="false" aria-label="Menu: settings, support, compatibility">⚙</button><div class="menu" id="mnl" role="menu" hidden><button role="menuitem" data-a="settings">⚙&nbsp; Settings</button><button role="menuitem" data-a="support">💬&nbsp; Contact support</button><button role="menuitem" data-a="compat">📱&nbsp; App compatibility</button></div></div></div>
+  <span id="st" data-on="0" class="mono text-[11px] flex items-center gap-2 text-mut"><i class="dot"></i><span id="stt" class="hidden sm:inline">CONNECTING</span></span>
+  <nav class="hidden lg:flex gap-6 mono text-xs uppercase tracking-wider text-mut" aria-label="Main"><a class="hover:text-eco" href="#about">About</a><a class="hover:text-eco" href="#how">How it works</a><a class="hover:text-eco" href="#rewards">Rewards</a><a class="hover:text-eco" href="#leaderboard">Leaderboard</a><a class="hover:text-eco" href="#sdgs">SDGs</a></nav>
+  <div class="flex items-center gap-2"><span id="ab" class="hidden lg:flex items-center gap-2"></span><button class="btn" data-a="install" style="min-height:44px;padding:0 16px">Install App</button><button id="bg" class="lg:hidden gh" style="width:48px;padding:0;font-size:1.3rem" aria-label="Open menu" aria-expanded="false">☰</button></div>
+ </div>
+ <nav id="dr" class="px-5" aria-label="Mobile"><a href="#about">About</a><a href="#how">How it works</a><a href="#rewards">Rewards</a><a href="#leaderboard">Leaderboard</a><a href="#sdgs">SDGs</a><div id="abm"></div></nav>
+</header>
+
+<main>
+<section class="relative overflow-hidden">
+ <i class="blob b1"></i><i class="blob b2"></i><div class="gridbg"></div>
+ <div class="relative max-w-6xl mx-auto px-5 py-16 lg:py-28 grid lg:grid-cols-2 gap-12 items-center">
+  <div class="rv">
+   <img src="logo.png" alt="Eco-Centive Innovations logo, made by Cyepher" width="120" height="120" class="logo-float rounded-full mb-6" style="width:120px;height:120px"><p class="mono text-xs tracking-widest text-eco mb-5">ECO-CENTIVE INNOVATIVE ROBOT // PHILIPPINES</p>
+   <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight">Protect the present.<br><span class="shine">Preserve the future.</span></h1>
+   <p class="mt-6 text-lg text-mut max-w-xl">A battery-powered robot collects your trash, sorts it into 3 compartments, and pays you in points. Spend them on gaming credits and vouchers.</p>
+   <div class="mt-8 flex flex-wrap gap-3"><button class="btn pulse" data-a="install">Install App</button><a class="btn ghost" href="#how">See how it works</a></div>
+   <dl class="mt-10 grid grid-cols-3 gap-3 mono max-w-md">
+    <div class="glass p-3"><dt class="text-[10px] text-mut">COMPARTMENTS</dt><dd class="text-2xl font-bold text-eco" data-count="3">0</dd></div>
+    <div class="glass p-3"><dt class="text-[10px] text-mut">MAX / ITEM</dt><dd class="text-2xl font-bold text-eco" data-count="30" data-pre="+">+0</dd></div>
+    <div class="glass p-3"><dt class="text-[10px] text-mut">SDGS</dt><dd class="text-2xl font-bold text-eco" data-count="5">0</dd></div>
+   </dl>
+  </div>
+  <div class="glass p-5 sm:p-6 rv" style="box-shadow:0 0 60px rgba(34,224,122,.12)">
+   <p class="mono text-xs text-mut mb-3">// MY POINTS</p>
+   <div id="acct"></div>
+  </div>
+ </div>
+</section>
+
+<div class="tick border-y" style="border-color:var(--line)" aria-hidden="true"><div class="tk mono"><span>WET +15</span><span>METAL +30</span><span>DRY +20</span><span>PROTECT THE PRESENT</span><span>PRESERVE THE FUTURE</span><span>SORT · DEPOSIT · EARN</span><span>WET +15</span><span>METAL +30</span><span>DRY +20</span><span>PROTECT THE PRESENT</span><span>PRESERVE THE FUTURE</span><span>SORT · DEPOSIT · EARN</span></div></div>
+<section id="about" class="py-20 border-t" style="border-color:var(--line)">
+ <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-2 gap-10 items-start">
+  <div class="rv"><p class="mono text-xs tracking-widest text-eco mb-3">// ABOUT &amp; GOALS</p>
+   <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Trash-to-Cash, rebuilt with a robot.</h2>
+   <p class="mt-4 text-mut">ECIR is a modern take on the Trash-to-Cash program in Lipa City. It targets proper waste disposal and management, one of the biggest environmental problems in the Philippines.</p></div>
+  <ul class="grid gap-3 rv">
+   <li class="glass p-4 flex gap-3"><svg class="w-6 h-6 text-eco shrink-0"><use href="#ck"/></svg><span><b>Local waste management:</b> built for Philippine communities.</span></li>
+   <li class="glass p-4 flex gap-3"><svg class="w-6 h-6 text-eco shrink-0"><use href="#ck"/></svg><span><b>Smart automation:</b> the robot collects and sorts by itself.</span></li>
+   <li class="glass p-4 flex gap-3"><svg class="w-6 h-6 text-eco shrink-0"><use href="#ck"/></svg><span><b>Less landfill:</b> sorted waste can be recycled or composted.</span></li>
+   <li class="glass p-4 flex gap-3"><svg class="w-6 h-6 text-eco shrink-0"><use href="#ck"/></svg><span><b>Positive habits:</b> points make sorting worth the effort.</span></li>
+  </ul>
+ </div>
+</section>
+
+<section id="how" class="py-20 border-t" style="border-color:var(--line)">
+ <div class="max-w-6xl mx-auto px-5">
+  <p class="mono text-xs tracking-widest text-eco mb-3 rv">// HOW IT WORKS</p>
+  <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight rv">3 compartments. 1 simple rule.</h2>
+  <div class="mt-10 grid md:grid-cols-3 gap-5">
+   <article class="glass p-6 rv hover:-translate-y-1 transition" style="border-top:3px solid #38bdf8"><p class="mono text-xs text-mut">CANISTER 01</p><div class="anim" style="--c:#38bdf8;--d:-0.7s" aria-hidden="true"><i class="item"></i><i class="bin"></i><span class="plus">+15</span></div><h3 class="text-xl font-bold mt-1">Wet Trash</h3><p class="mono text-4xl font-bold text-eco my-4">+15 <span class="text-sm text-mut">pts / item</span></p><p class="text-mut">Organic waste, food leftovers and vegetable scraps.</p></article>
+   <article class="glass p-6 rv hover:-translate-y-1 transition" style="border-top:3px solid #cbd5e1"><p class="mono text-xs text-mut">CANISTER 02</p><div class="anim" style="--c:#cbd5e1;--d:-1.4s" aria-hidden="true"><i class="item"></i><i class="bin"></i><span class="plus">+30</span></div><h3 class="text-xl font-bold mt-1">Metal</h3><p class="mono text-4xl font-bold text-eco my-4">+30 <span class="text-sm text-mut">pts / item</span></p><p class="text-mut">Aluminum cans and steel tins.</p></article>
+   <article class="glass p-6 rv hover:-translate-y-1 transition" style="border-top:3px solid #f59e0b"><p class="mono text-xs text-mut">CANISTER 03</p><div class="anim" style="--c:#f59e0b;--d:-2.1s" aria-hidden="true"><i class="item"></i><i class="bin"></i><span class="plus">+20</span></div><h3 class="text-xl font-bold mt-1">Dry Trash</h3><p class="mono text-4xl font-bold text-eco my-4">+20 <span class="text-sm text-mut">pts / item</span></p><p class="text-mut">Clean recyclables: paper, cardboard and non-metal items.</p></article>
+  </div>
+  <p class="glass p-5 mt-6 text-mut rv"><b class="text-white">Why separate?</b> Wet waste soaks into cardboard and paper and makes them unrecyclable. Splitting wet, metal and dry keeps recyclables clean.</p>
+ </div>
+</section>
+
+<section id="rewards" class="py-20 border-t" style="border-color:var(--line)">
+ <div class="max-w-6xl mx-auto px-5">
+  <p class="mono text-xs tracking-widest text-eco mb-3 rv">// REWARDS CATALOG</p>
+  <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight rv">Turn points into rewards.</h2>
+  <div class="flex gap-2 my-8" role="tablist"><button class="tab" role="tab" id="t1" aria-selected="true" aria-controls="p1">Gaming Credits</button><button class="tab" role="tab" id="t2" aria-selected="false" aria-controls="p2">Vouchers</button></div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="p1" role="tabpanel" aria-labelledby="t1">
+   <details class="glass cp"><summary><h3>Robux 80</h3><p>Roblox currency top-up.</p><span class="badge">600 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Redeem 600 points for 80 Robux. Your code appears after redemption and a message is prepared for your Gmail. Works on the official Roblox redeem page.</p><button class="btn redeem" style="margin-top:14px" data-n="Robux 80" data-c="600">Redeem for 600 pts</button></details>
+   <details class="glass cp"><summary><h3>Mobile game points</h3><p>Top-up for popular mobile titles.</p><span class="badge">450 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Redeem 450 points for a top-up code. Choose a supported mobile game at checkout. Codes are single-use.</p><button class="btn redeem" style="margin-top:14px" data-n="Mobile game points" data-c="450">Redeem for 450 pts</button></details>
+   <details class="glass cp"><summary><h3>In-game tokens</h3><p>Pack of 100 tokens.</p><span class="badge">300 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Redeem 300 points for 100 in-game tokens, credited to the linked game account.</p><button class="btn redeem" style="margin-top:14px" data-n="In-game tokens" data-c="300">Redeem for 300 pts</button></details>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5" id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+   <details class="glass cp"><summary><h3>Canteen meal discount</h3><p>20% off one meal.</p><span class="badge">240 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Show the voucher QR code at the canteen counter. One use per voucher. Valid for 7 days after redemption.</p><button class="btn redeem" style="margin-top:14px" data-n="Canteen meal discount" data-c="240">Redeem for 240 pts</button></details>
+   <details class="glass cp"><summary><h3>Partner drink voucher</h3><p>Free regular drink.</p><span class="badge">360 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Redeem at any partner drink stand. Regular size only. Valid for 14 days after redemption.</p><button class="btn redeem" style="margin-top:14px" data-n="Partner drink voucher" data-c="360">Redeem for 360 pts</button></details>
+   <details class="glass cp"><summary><h3>Stationery coupon</h3><p>10% off at partner shop.</p><span class="badge">150 pts</span><span class="hint">Tap for details</span></summary><p class="desc">Show the coupon code at the partner shop. Applies to one purchase. Not combinable with other offers.</p><button class="btn redeem" style="margin-top:14px" data-n="Stationery coupon" data-c="150">Redeem for 150 pts</button></details>
+  </div>
+ </div>
+</section>
+
+<section id="leaderboard" class="py-20 border-t" style="border-color:var(--line)">
+ <div class="max-w-3xl mx-auto px-5">
+  <p class="mono text-xs tracking-widest text-eco mb-3 text-center rv">// LEADERBOARD</p>
+  <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-center rv">Top campus sections this month</h2>
+  <div class="glass mt-10 overflow-x-auto rv">
+   <table class="lb w-full" style="min-width:440px"><thead><tr><th>Rank</th><th>Section</th><th>Points</th></tr></thead><tbody>
+    <tr><td class="rk">#5</td><td>Section 10-D</td><td class="pt">0</td></tr>
+    <tr><td class="rk">#4</td><td>Section 11-A</td><td class="pt">0</td></tr>
+    <tr><td class="rk">#3</td><td>Section 9-C</td><td class="pt">0</td></tr>
+    <tr><td class="rk">#2</td><td>Section 12-B</td><td class="pt">0</td></tr>
+    <tr class="r1"><td class="rk text-eco">#1 ★</td><td>Section 10-A</td><td class="pt">0</td></tr>
+   </tbody></table>
+  </div>
+ </div>
+</section>
+
+<section id="sdgs" class="py-20 border-t" style="border-color:var(--line)">
+ <div class="max-w-6xl mx-auto px-5">
+  <p class="mono text-xs tracking-widest text-eco mb-3 rv">// UN SUSTAINABLE DEVELOPMENT GOALS</p>
+  <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight rv">Aligned with 5 goals.</h2>
+  <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+   <div class="glass p-4 rv"><p class="mono text-eco font-bold">SDG 3</p><p class="text-sm mt-1">Good Health and Well-Being</p></div>
+   <div class="glass p-4 rv"><p class="mono text-eco font-bold">SDG 7</p><p class="text-sm mt-1">Affordable and Clean Energy</p></div>
+   <div class="glass p-4 rv"><p class="mono text-eco font-bold">SDG 9</p><p class="text-sm mt-1">Industry, Innovation and Infrastructure</p></div>
+   <div class="glass p-4 rv"><p class="mono text-eco font-bold">SDG 12</p><p class="text-sm mt-1">Responsible Consumption and Production</p></div>
+   <div class="glass p-4 rv"><p class="mono text-eco font-bold">SDG 13</p><p class="text-sm mt-1">Climate Action</p></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="border-t py-12" style="border-color:var(--line)">
+ <div class="max-w-6xl mx-auto px-5 grid md:grid-cols-3 gap-8 text-sm text-mut">
+  <div><img src="logo.png" alt="" width="56" height="56" class="rounded-full mb-3" style="width:56px;height:56px"><p class="mono font-bold text-white">CYEPHER <span class="text-eco">//</span> ECIR</p><p class="mt-2">Protect the present. Preserve the future.</p></div>
+  <nav class="grid gap-1" aria-label="Footer"><a class="py-2" href="#about">About</a><a class="py-2" href="#how">How it works</a><a class="py-2" href="#rewards">Rewards</a><a class="py-2" href="#leaderboard">Leaderboard</a></nav>
+  <div><p class="text-white font-bold">Designed and Developed by Cyepher</p><p class="mt-2">Prototype for demonstration only. All rights reserved.</p></div>
+ </div>
+</footer>
+
+<dialog id="dlg"></dialog><div id="toast" role="status"></div>
+<script>
+var bg=document.getElementById('bg'),dr=document.getElementById('dr');
+bg.onclick=function(){var o=dr.classList.toggle('open');bg.setAttribute('aria-expanded',o);bg.textContent=o?'✕':'☰'};
+dr.onclick=function(e){if(e.target.tagName==='A'){dr.classList.remove('open');bg.textContent='☰'}};
+[['t1','p1'],['t2','p2']].forEach(function(p){document.getElementById(p[0]).onclick=function(){[['t1','p1'],['t2','p2']].forEach(function(q){var s=q[0]===p[0];document.getElementById(q[0]).setAttribute('aria-selected',s);document.getElementById(q[1]).hidden=!s})}});
+var mn=document.getElementById('mn'),ml=document.getElementById('mnl');
+mn.onclick=function(e){e.stopPropagation();ml.hidden=!ml.hidden;mn.setAttribute('aria-expanded',!ml.hidden)};
+document.addEventListener('click',function(){ml.hidden=true;mn.setAttribute('aria-expanded','false')});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){ml.hidden=true}});
+if('serviceWorker' in navigator)addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){el.style.transitionDelay=([].indexOf.call(el.parentNode.children,el)%4*90)+'ms';io.observe(el)});
+document.querySelectorAll('[data-count]').forEach(function(el){var t=+el.dataset.count,pre=el.dataset.pre||'',s=null;function f(ts){s=s||ts;var p=Math.min(1,(ts-s)/1200);el.textContent=pre+Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)});
+var pg=document.getElementById('prog');addEventListener('scroll',function(){var h=document.documentElement;pg.style.transform='scaleX('+(h.scrollTop/((h.scrollHeight-h.clientHeight)||1))+')'},{passive:true});
+document.addEventListener('pointermove',function(e){var g=e.target.closest&&e.target.closest('.glass');if(g){var r=g.getBoundingClientRect();g.style.setProperty('--mx',(e.clientX-r.left)+'px');g.style.setProperty('--my',(e.clientY-r.top)+'px')}});
+</script>
+<script type="module">import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,onAuthStateChanged,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOut,updateProfile} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getDatabase,ref,onValue,set,push,runTransaction} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+// PASTE YOUR FIREBASE WEB CONFIG HERE (Project settings > Your apps > Web)
+const cfg={apiKey:"AIzaSyB0x25R3dAoVCuVpqQ-LbU24mwBWue2fV0",authDomain:"cyepher-c6816.firebaseapp.com",databaseURL:"https://cyepher-c6816-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"cyepher-c6816",appId:"1:144337062968:web:fe5f6cfb3cd6b946496acd"};
+const app=initializeApp(cfg),auth=getAuth(app),db=getDatabase(app);
+const $=i=>document.getElementById(i),COSTS=[150,240,300,360,450,600];
+const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let U=null,prof={},pts=0,offs=[],wOff=null;
+function mail(r){const b=`Hi ${U.displayName||''},
+
+You redeemed "${r.name}" for ${r.cost} points.
+
+Your code: ${r.code}
+
+Use it with the partner this reward applies to. Keep this code private.
+
+Eco-centive (prototype)
+Protect the present. Preserve the future.`;
+ return 'https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(U.email)+'&su='+encodeURIComponent('Your Eco-centive reward: '+r.name)+'&body='+encodeURIComponent(b)}
+function gen(){const A='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',a=new Uint8Array(12);crypto.getRandomValues(a);let s='';for(let i=0;i<12;i++){s+=A[a[i]%A.length];if(i%4==3&&i<11)s+='-'}return 'ECO-'+s}
+function toast(m){const t=$('toast');t.textContent=m;t.style.display='block';clearTimeout(t._t);t._t=setTimeout(()=>t.style.display='none',2500)}
+function rewards(){return Object.entries(prof.rewards||{}).sort((a,b)=>a[0]<b[0]?1:-1).map(e=>e[1])}
+function render(){
+ const a=U?`<span class="hi">@${esc(U.displayName||'me')} · ${pts} pts</span><button class="gh" data-a="out">Log out</button>`:'<button class="gh" data-a="in">Log in</button><button class="gh fill" data-a="up">Sign up</button>';
+ $('ab').innerHTML=a;$('abm').innerHTML=a;
+ const nx=COSTS.find(c=>c>pts);
+ let h=`<div class="pts">${U?'@'+esc(U.displayName||'me')+' · points':'Your points'}<b class="big">${pts}</b><div class="bar"><i style="width:${Math.min(100,pts/6)}%"></i></div><small>${U?(nx?(nx-pts)+' pts to next reward':'You can redeem any reward'):'Log in or sign up to see your points'}</small></div>`;
+ if(U&&!prof.card)h+='<p class="mc">Link your card to start earning</p><input id="ch" placeholder="Card ID (e.g. c04A1B2C3)" autocomplete="off"><button class="btn" style="width:100%" data-a="link">Link card</button>';
+ else if(U)h+=`<p class="mc">Card linked: ${esc(prof.card)}<br>Drop trash at the machine, then tap your card. Points appear here live.</p>`;
+ const rs=rewards();if(rs.length){h+='<p class="mc" style="margin-top:16px">My reward codes</p>';rs.slice(0,4).forEach(r=>{h+=`<div class="row"><span>${esc(r.name)}<br><small>${esc(r.code)}</small></span><a target="_blank" rel="noopener" href="${mail(r)}">Email</a></div>`})}
+ $('acct').innerHTML=h}
+function watchWallet(){if(wOff){wOff();wOff=null}pts=0;if(!prof.card)return;let ready=false;
+ wOff=onValue(ref(db,'wallets/'+prof.card+'/points'),s=>{const n=s.val()||0;if(ready&&n>pts)toast('+'+(n-pts)+' points');ready=true;pts=n;render()})}
+onAuthStateChanged(auth,u=>{offs.forEach(f=>f());offs=[];if(wOff){wOff();wOff=null}U=u;prof={};pts=0;render();if(!u)return;
+ offs.push(onValue(ref(db,'users/'+u.uid),s=>{const old=prof.card;prof=s.val()||{};if(prof.card!==old)watchWallet();render()}))});
+const dlg=$('dlg');
+function show(h){dlg.innerHTML=h+'<button class="link-btn" data-a="close">Close</button>';if(!dlg.open)dlg.showModal()}
+const ERR={'auth/email-already-in-use':'This email already has an account. Log in instead.','auth/invalid-credential':'Wrong email or password.','auth/weak-password':'Password must be at least 6 characters.','auth/invalid-email':'Enter a valid email address.'};
+function authUI(m,note){const up=m=='up';
+ show(`<h2 style="text-align:left">${up?'Create account':'Log in'}</h2>${note?'<p>'+note+'</p>':''}<form id="af" novalidate>${up?'<label for="fn">Username</label><input id="fn" autocomplete="username" placeholder="e.g. eco_hero" maxlength="16">':''}<label for="fe">Gmail address</label><input id="fe" type="email" autocomplete="email" placeholder="you@gmail.com"><label for="fp">Password</label><input id="fp" type="password" autocomplete="${up?'new-password':'current-password'}" placeholder="At least 6 characters"><div class="err" id="er" role="alert"></div><button class="btn" style="width:100%" type="submit">${up?'Sign up':'Log in'}</button></form><button class="link-btn" data-a="${up?'in':'up'}">${up?'Have an account? Log in':'New here? Sign up'}</button>`);
+ $('af').onsubmit=async ev=>{ev.preventDefault();const e=$('fe').value.trim(),p=$('fp').value,er=$('er');
+  try{if(up){const n=$('fn').value.trim().toLowerCase();if(!/^[a-z0-9_]{3,16}$/.test(n)){er.textContent='Username: 3 to 16 letters, numbers or _';return}const c=await createUserWithEmailAndPassword(auth,e,p);try{await set(ref(db,'usernames/'+n),c.user.uid)}catch(x){await c.user.delete();er.textContent='That username is taken. Try another.';return}await set(ref(db,'users/'+c.user.uid+'/username'),n);await updateProfile(c.user,{displayName:n});U=auth.currentUser;render()}
+  else await signInWithEmailAndPassword(auth,e,p);dlg.close()}catch(x){er.textContent=ERR[x.code]||'Something went wrong. Try again.'}}}
+async function redeem(name,cost){
+ if(!U){authUI('in','Log in to redeem rewards.');return}
+ if(!prof.card){show('<h2 style="text-align:left">Link your card first</h2><p>Link your card on the dashboard so we know where your points are.</p>');return}
+ if(pts<cost){show(`<h2 style="text-align:left">Not enough points</h2><p>You need <strong>${cost-pts} more points</strong> for ${esc(name)}.</p>`);return}
+ try{const r=await runTransaction(ref(db,'wallets/'+prof.card+'/points'),c=>(c||0)>=cost?c-cost:undefined);
+  if(!r.committed){show('<h2 style="text-align:left">Not enough points</h2>');return}
+  const rw={name,cost,code:gen()};await push(ref(db,'users/'+U.uid+'/rewards'),rw);
+  show(`<h2 style="text-align:left">Reward unlocked</h2><p><strong>${esc(name)}</strong> for ${cost} points. Your code:</p><div class="code">${rw.code}</div><p>Tap below to open Gmail with the message ready, then press Send.</p><a class="btn" style="width:100%" target="_blank" rel="noopener" href="${mail(rw)}">Email code to my Gmail</a>`)}
+ catch(e){toast('Could not redeem. Try again.')}}
+async function link(){const h=($('ch').value||'').trim();if(!/^[A-Za-z0-9_-]{8,64}$/.test(h)){toast('Card ID must be 8 to 64 letters or digits');return}
+ try{await set(ref(db,'cardOwners/'+h),U.uid);await set(ref(db,'users/'+U.uid+'/card'),h);toast('Card linked')}catch(e){toast('This card is already linked to another account')}}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-a],.redeem');if(!t)return;
+ const a=t.dataset.a;if(a){if(a=='in'||a=='up')authUI(a);else if(a=='out')signOut(auth);else if(a=='close')dlg.close();else if(a=='link')link();else if(a=='settings')settingsUI();else if(a=='support')supportUI();else if(a=='compat')compatUI();else if(a=='install'&&dp){dp.prompt();dp=null}else if(a=='install')show('<h2>Install the app</h2><p><b>Android (Chrome):</b> tap the ⋮ menu, then <b>Add to Home screen</b>.</p><p><b>iPhone (Safari):</b> tap Share, then <b>Add to Home Screen</b>.</p>');return}
+ redeem(t.dataset.n,+t.dataset.c)});
+onValue(ref(db,'.info/connected'),s=>{const e=$('st');if(e){e.dataset.on=s.val()?1:0;$('stt').textContent=s.val()?'SERVER LIVE':'OFFLINE'}});
+let dp=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e});
+const SUPPORT_EMAIL='YOUR_SUPPORT_EMAIL';
+const PK='eco_prefs';let pref={};try{pref=JSON.parse(localStorage.getItem(PK)||'{}')}catch(e){}
+function applyPref(){const c=document.documentElement.classList;c.toggle('noanim',!!pref.calm);c.toggle('bigtext',!!pref.big)}
+applyPref();
+dlg.addEventListener('change',e=>{if(e.target.id=='pc')pref.calm=e.target.checked;else if(e.target.id=='pb')pref.big=e.target.checked;else return;try{localStorage.setItem(PK,JSON.stringify(pref))}catch(x){}applyPref()});
+function settingsUI(){show('<h2>Settings</h2><label class="tg"><input type="checkbox" id="pc"'+(pref.calm?' checked':'')+'><span>Reduce animations</span></label><label class="tg"><input type="checkbox" id="pb"'+(pref.big?' checked':'')+'><span>Larger text</span></label><p class="mc">Saved on this device.</p>'+(U?'<button class="btn ghost" style="width:100%" data-a="out">Log out</button>':''))}
+function supportUI(){const g='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(SUPPORT_EMAIL)+'&su='+encodeURIComponent('ECIR support')+'&body='+encodeURIComponent('Username: '+(U&&U.displayName?'@'+U.displayName:'(not logged in)')+'\n\nDescribe the problem:\n');
+ show('<h2>Contact support</h2><ul class="cl"><li><b>Points missing?</b> Link your card on the dashboard, then tap it on the machine.</li><li><b>Can’t log in?</b> Check your email and password, or sign up again.</li><li><b>Reward code?</b> Find it under “My reward codes” and tap Email.</li></ul>'+(SUPPORT_EMAIL.includes('YOUR_')?'':'<a class="btn" style="width:100%;margin-bottom:8px" target="_blank" rel="noopener" href="'+g+'">Email support (Gmail)</a>')+'<a class="btn ghost" style="width:100%" target="_blank" rel="noopener" href="https://github.com/hamptercoding16/Cyepher/issues/new">Report on GitHub</a>')}
+function compatUI(){const ua=navigator.userAgent;const os=/android/i.test(ua)?'Android':(/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1))?'iPhone / iPad (iOS)':/windows/i.test(ua)?'Windows':/mac/i.test(ua)?'macOS':/linux|cros/i.test(ua)?'Linux / ChromeOS':'your device';
+ show('<h2>App compatibility</h2><p>Your device: <b class="mono" style="color:var(--eco)">'+os+'</b></p><ul class="cl"><li><b>Android:</b> Chrome, Samsung Internet, Edge or Firefox. Tap Install App, or ⋮ then Add to Home screen.</li><li><b>iPhone / iPad (iOS):</b> Safari. Tap Share, then Add to Home Screen.</li><li><b>Windows, macOS, Linux, ChromeOS:</b> Chrome or Edge. Use the install icon in the address bar.</li><li><b>Other phones:</b> any modern browser works. Use its menu, then Add to Home screen.</li></ul><p class="mc">Runs from the browser as a web app. No app store download needed.</p>')}
+</script>
+</body>
+</html>
